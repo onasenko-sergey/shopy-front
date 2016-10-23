@@ -1,10 +1,14 @@
 import React from 'react'
-import 'styles/core.scss'
+import '../../styles/core.scss'
+import Header from 'components/Header'
 
 export const CoreLayout = ({ children }) => (
-  <main style={{ height: '100%' }}>
-    {children}
-  </main>
+  <div style={{ height: '100%' }}>
+    <Header />
+    <main>
+      {children}
+    </main>
+  </div>
 )
 
 CoreLayout.propTypes = {
