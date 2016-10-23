@@ -1,9 +1,10 @@
 import React from 'react'
 import './Header.scss'
+import Contacts from './Contacts'
 
 export const Header = () => (
   <header className='header'>
-    <h3>Header</h3>
+    <Contacts />
   </header>
 )
 

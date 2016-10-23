@@ -1,0 +1,32 @@
+.contacts {
+  font-size: 12px;
+  text-align: center;
+  border-bottom: 1px solid #edeff1;
+
+  &__addresses {
+    @media screen and (min-width: 768px) {
+      padding-top: 16px;
+      padding-bottom: 12px;
+      text-align: left;
+    }
+  }
+
+  &__addresses, &__address, &__social-medias{
+    margin-bottom: 0;
+  }
+
+  &__mail-link, &__phone-link {
+    &, &:active, &:focus, &:hover, &:visited {
+      color: #34404b;
+      text-decoration: none;
+    }
+  }
+
+  &__social-medias {
+    @media screen and (min-width: 768px) {
+      padding-top: 15px;
+      padding-bottom: 13px;
+      text-align: right;
+    }
+  }
+}
