@@ -1,0 +1,159 @@
+%icon {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.icon_mail {
+  @extend %icon;
+
+  &:before{
+    background-image: url(./assets/mail.png);
+  }
+}
+
+.icon_phone {
+  @extend %icon;
+
+  &:before{
+    background-image: url(./assets/phone.png);
+  }
+}
+
+%sm-icon {
+  @extend %icon;
+  width: 20px;
+}
+
+.icon_facebook {
+  @extend %sm-icon;
+
+  &:before{
+    background-image: url(./assets/facebook.jpg);
+  }
+}
+
+.icon_twitter {
+  @extend %sm-icon;
+
+  &:before{
+    background-image: url(./assets/twitter.jpg);
+  }
+}
+
+.icon_googlePlus {
+  @extend %sm-icon;
+
+  &:before{
+    background-image: url(./assets/google-plus.jpg);
+  }
+}
+
+.icon_instagram {
+  @extend %sm-icon;
+
+  &:before{
+    background-image: url(./assets/instagram.jpg);
+  }
+}
+
+.icon_search {
+  @extend %icon;
+
+  &:before {
+    background-image: url(./assets/search.png);
+  }
+
+  &_active:before {
+    background-image: url(./assets/search-active.png);
+  }
+}
+
+.icon_user {
+  @extend %icon;
+
+  &:before {
+    background-image: url(./assets/user.png);
+  }
+
+  &_active:before {
+    background-image: url(./assets/user-active.png);
+  }
+}
+
+.icon_cart {
+  @extend %icon;
+
+  &:before {
+    background-image: url(./assets/cart.png);
+  }
+
+  &_active:before {
+    background-image: url(./assets/cart-active.png);
+  }
+}
+
+.icon_share{
+  @extend %icon;
+
+  &:before{
+    background-image: url(./assets/share.png);
+  }
+
+  &_active:before{
+    background-image: url(./assets/share-active.png);
+  }
+}
+
+.icon_add-to-cart{
+  @extend %icon;
+
+  &:before{
+    background-image: url(./assets/add-to-cart.png);
+  }
+
+  &_active:before{
+    background-image: url(./assets/add-to-cart-active.png);
+  }
+}
+
+.icon_like{
+  @extend %icon;
+
+  &:before{
+    background-image: url(./assets/like.png);
+  }
+
+  &_active:before{
+    background-image: url(./assets/like-active.png);
+  }
+}
+
+.icon_star{
+  @extend %icon;
+  width: 13px;
+  height: 13px;
+
+  &:before{
+    background-size: 13px;
+    background-image: url(./assets/star.jpg);
+  }
+
+  &_active:before{
+    background-image: url(./assets/star-active.jpg);
+  }
+}
