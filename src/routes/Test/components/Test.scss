@@ -1,0 +1,25 @@
+.test {
+  position: relative;
+  padding-top: 2em;
+  padding-bottom: 2em;
+
+  &:before{
+    content: 'Test component:';
+    position: absolute;
+    top: 0.25em;
+    left: 1em;
+    color: #bbbbbb;
+    font-size: 1.5rem;
+  }
+
+  &:after{
+    content: '';
+    position: absolute;
+    top: 2em;
+    right: 0;
+    bottom: 2em;
+    left: 0;
+    border: 1px solid #bbbbbb;
+    pointer-events: none;
+  }
+}
