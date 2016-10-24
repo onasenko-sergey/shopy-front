@@ -1,0 +1,7 @@
+.disabled-link {
+  &, &:active, &:focus, &:hover, &:visited{
+    color: currentColor;
+    text-decoration: none;
+    cursor: not-allowed;
+  }
+}
