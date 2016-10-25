@@ -1,0 +1,103 @@
+@import '../../../styles/variables/colors';
+
+// use react-bootstrap default class names
+.navbar {
+  margin-bottom: 0;
+  padding-top: 30px;
+  padding-bottom: 31px;
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-brand {
+  height: auto;
+  padding: 0;
+
+  @media screen and (min-width: 400px) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.navbar-toggle {
+  margin-top: 12px;
+  margin-right: 0;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 15px;
+  }
+}
+
+.navbar-nav {
+  margin-top: 7px;
+
+  @media screen and (min-width: 992px) {
+    margin-left: 42px;
+  }
+
+  li a {
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 16px;
+
+    @media screen and (min-width: 992px) {
+      padding-right: 12px;
+      padding-left: 12px;
+    }
+
+    &.active {
+      &, &:active, &:focus, &:hover, &:visited {
+        color: $primaryColor;
+      }
+    }
+  }
+
+  li:last-child a {
+    margin-right: 0;
+  }
+}
+
+.navbar-collapse {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  clear: both;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    border-bottom: none;
+    clear: none;
+    text-align: left;
+  }
+
+  &:after {
+    clear: none;
+  }
+}
+
+.navbar__user-menu {
+  clear: both;
+  text-align: center;
+
+  @media screen and (min-width: 400px) {
+    margin-right: 15px;
+    float: right;
+    clear: none;
+    text-align: right;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 0;
+  }
+}
+
+.navbar__searchbar {
+  clear: both;
+
+  // inline searchbar
+  @media screen and (min-width: 1200px) {
+    overflow: hidden;
+    clear: none;
+  }
+}
