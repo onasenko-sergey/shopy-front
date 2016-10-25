@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../styles/core.scss'
 import Header from 'components/Header'
+import Modals from 'containers/Modals'
 
 export const CoreLayout = ({ children }) => (
   <div style={{ height: '100%' }}>
@@ -8,6 +9,7 @@ export const CoreLayout = ({ children }) => (
     <main>
       {children}
     </main>
+    <Modals />
   </div>
 )
 
