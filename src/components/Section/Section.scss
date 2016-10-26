@@ -1,0 +1,30 @@
+@import '../../styles/variables/colors';
+
+.section {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
+
+  .title{
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: $defaultColor;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    span{
+      color: $primaryColor;
+    }
+  }
+
+  .description{
+    color: #495662;
+    font-size: 16px;
+  }
+}
