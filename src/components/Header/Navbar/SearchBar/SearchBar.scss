@@ -1,0 +1,20 @@
+@import '../../../../styles/variables/colors';
+
+.search-bar {
+  .form-group{
+    display: inline-block;
+    width: 100%;
+    padding: 16px 10px 0 10px;
+    margin-bottom: 0;
+  }
+
+  .input-group-addon{
+    color: $primaryColor;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  input{
+    width: 100%;
+  }
+}
