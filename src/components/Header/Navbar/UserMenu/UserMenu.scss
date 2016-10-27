@@ -1,0 +1,22 @@
+.user-menu {
+  &__item {
+    padding-top: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .dropdown-menu {
+    margin-bottom: 0;
+    top: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
