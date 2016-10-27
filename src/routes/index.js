@@ -1,6 +1,6 @@
 import React from 'react'
-// We only need to import the modules necessary for initial render
 import CoreLayout from 'layouts/CoreLayout'
+import User from './User'
 
 export const createRoutes = (store) => {
   let routes = [
@@ -8,7 +8,9 @@ export const createRoutes = (store) => {
       path: '/',
       component: CoreLayout,
       indexRoute: { component: () => (<div>Hello world</div>) },
-      childRoutes: []
+      childRoutes: [
+        User(store)
+      ]
     }
   ]
 
