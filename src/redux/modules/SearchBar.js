@@ -24,9 +24,11 @@ export const actions = {
     }
   },
   setFormRef: (ref) => {
+    const symbol = Symbol()
+    window[symbol] = ref
     return {
       type: constants.SET_REF,
-      payload: ref
+      payload: symbol
     }
   }
 }
@@ -35,7 +37,7 @@ export const actions = {
 
 export const defaultState = {
   isOpened: false,
-  formRef: null
+  formRefSymbol: null
 }
 
 export default function (state = defaultState, action) {
@@ -53,7 +55,7 @@ export default function (state = defaultState, action) {
     case constants.SET_REF:
       return {
         ...state,
-        formRef: action.payload
+        formRefSymbol: action.payload
       }
     default:
       return state
