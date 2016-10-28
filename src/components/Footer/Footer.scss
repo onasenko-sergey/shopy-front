@@ -1,0 +1,62 @@
+.footer {
+  padding-top: 30px;
+  border-top: 1px solid #edeff1;
+  text-align: center;
+  background-color: #fff;
+
+  @media screen and (min-width: 768px){
+    padding-top: 78px;
+    text-align: left;
+  }
+
+  .copyright{
+    padding-top: 8px;
+  }
+
+  .secondary-menu{
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 30px;
+    padding-left: 0;
+    text-align: center;
+    border-bottom: 1px solid #edeff1;
+
+    @media screen and (min-width: 768px){
+      padding-bottom: 78px;
+      padding-left: 40px;
+      text-align: left;
+      column-count: 3;
+      column-gap: 50px;
+      border-bottom: none;
+    }
+
+    @media screen and (min-width: 992px){
+      padding-left: 105px;
+    }
+
+    &__item{
+      margin-right: 15px;
+      margin-left: 15px;
+      padding-top: 15px;
+      display: inline-block;
+
+      @media screen and (min-width: 768px){
+        margin-right: 0;
+        margin-left: 0;
+        padding-top: 9px;
+        display: list-item;
+      }
+    }
+  }
+
+  .payment-header{
+    margin-top: 20px;
+    font-size: 16px;
+    color: #ff5912;
+  }
+
+  .payment-image{
+    display: inline-block;
+    padding-top: 8px;
+  }
+}

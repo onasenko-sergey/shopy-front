@@ -5,6 +5,7 @@ import Header from 'components/Header'
 import Modals from 'containers/Modals'
 import Errors from 'containers/Errors'
 import NewsLetter from 'components/NewsLetter'
+import Footer from 'components/Footer'
 
 export const CoreLayout = ({ children }) => (
   <div className='core-layout'>
@@ -16,6 +17,7 @@ export const CoreLayout = ({ children }) => (
     <aside>
       <Errors />
     </aside>
+    <Footer />
     <Modals />
   </div>
 )
