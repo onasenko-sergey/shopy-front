@@ -1,0 +1,44 @@
+@import '../../../styles/variables/colors';
+
+.nl-form {
+  &__field {
+    padding-top: 55px;
+    padding-right: 30px;
+    padding-left: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__btn-submit {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    padding: 15px 30px;
+    font-weight: 700;
+    transform: translateX(-50%);
+
+    &:active, &:focus {
+      outline: none;
+    }
+
+    &, &:active, &:hover, &:active:hover, &:focus {
+      color: #fff;
+      background-color: $primaryColor;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nl-form {
+    &__field {
+      padding-left: 40px;
+    }
+
+    &__btn-submit {
+      position: static;
+      margin: 36px 26px;
+      float: right;
+      transform: translateX(0);
+    }
+  }
+}

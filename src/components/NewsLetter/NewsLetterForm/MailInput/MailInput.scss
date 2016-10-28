@@ -1,0 +1,52 @@
+@import '../../../../styles/variables/colors';
+
+.nl-form {
+  &__input {
+    width: 100%;
+    max-width: 350px;
+    border: none;
+    border-bottom: 1px solid transparent;
+
+    &_active {
+      border-bottom: 1px solid $defaultColor;
+      outline: none;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 50%;
+    top: 46px;
+    width: 95%;
+    color: $defaultColor;
+    font-weight: 400;
+    pointer-events: none;
+    transition: all .3s;
+    transform: translateX(-50%);
+
+    &_active {
+      transform: translateX(-50%) translateY(-25px) scale(0.85);
+      transform-origin: center;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nl-form {
+    &__input {
+      max-width: none;
+    }
+
+    &__label {
+      left: 26%;
+      width: 74%;
+      text-align: left;
+      transform: translateX(0);
+
+      &_active {
+        transform: translateY(-25px) scale(0.85);
+      }
+    }
+  }
+}
+
