@@ -22,3 +22,23 @@ export function resetAuthHeader () {
 export function authVk (code, redirectUri) {
   return backend.post('/auth/vk', { code, redirect_uri: redirectUri })
 }
+
+export function getCarouselProducts () {
+  return backend.get('/products/carousel')
+}
+
+export function getNewArrivals () {
+  return backend.get('/products/new-arrivals')
+}
+
+export function getSaleProduct () {
+  return backend.get('/products/sale')
+}
+
+export function getBestSales () {
+  return backend.get('/products/best-sales')
+}
+
+export function getProducts () {
+  return backend.post('/products')
+}
