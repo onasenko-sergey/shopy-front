@@ -1,13 +1,13 @@
-import React from 'react'
 import CoreLayout from 'layouts/CoreLayout'
 import User from './User'
+import Main from './Main'
 
 export const createRoutes = (store) => {
   let routes = [
     {
       path: '/',
       component: CoreLayout,
-      indexRoute: { component: () => (<div>Hello world</div>) },
+      indexRoute: Main(store),
       childRoutes: [
         User(store)
       ]
