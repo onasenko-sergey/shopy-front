@@ -1,0 +1,46 @@
+@import '../../../../styles/variables/colors';
+
+.shopy-carousel {
+  margin-top: -1px;
+  background-image: url(./assets/carousel-bg.jpg);
+  background-size: cover;
+  background-position: top right;
+
+  .carousel-indicators {
+    top: 283px;
+    bottom: auto;
+    left: 30%;
+
+    li {
+      margin: 0 0 8px 0;
+      display: block;
+      width: 10px;
+      height: 17px;
+      background-color: #fff;
+      border: none;
+      border-radius: 0;
+
+      &.active {
+        width: 10px;
+        height: 36px;
+        background-color: $primaryColor;
+      }
+    }
+  }
+
+  &__item {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    padding-right: 7.5%;
+    padding-left: 7.5%;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .shopy-carousel {
+    &__item {
+      padding-top: 200px;
+      padding-bottom: 174px;
+    }
+  }
+}

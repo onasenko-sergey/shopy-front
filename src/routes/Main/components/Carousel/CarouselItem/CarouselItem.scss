@@ -1,0 +1,60 @@
+@import '../../../../../styles/variables/colors';
+
+.carousel-item {
+  min-height: 300px;
+
+  &__headline{
+    margin-top: 26px;
+    margin-bottom: 13px;
+    font-size: 28px;
+    color: $primaryColor;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__subtitle, &__price{
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #3c4751;
+  }
+
+  &__description{
+    margin-bottom: 42px;
+    font-size: 16px;
+    color: #495662;
+  }
+
+  &__price{
+    display: inline;
+  }
+
+  &__orderButton{
+    display: block;
+    margin: 10px 0 0 -7px;
+    padding: 0;
+    font-size: 18px;
+    vertical-align: baseline;
+    text-align: right;
+
+    &, &:active, &:focus, &:hover, &:visited{
+      color: $primaryColor;
+      text-decoration: none;
+      outline: none;
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .carousel-item {
+    min-height: 250px;
+
+    &__headline {
+      font-size: 49px;
+    }
+
+    &__orderButton {
+      display: inline-block;
+      margin-left: 32px;
+    }
+  }
+}

@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import './Main.scss'
+import Carousel from './Carousel'
 
 const propTypes = {
-  init: PropTypes.func.isRequired
+  init: PropTypes.func.isRequired,
+  carouselProducts: PropTypes.array.isRequired
 }
 
 class Main extends Component {
@@ -12,9 +14,10 @@ class Main extends Component {
   }
 
   render () {
+    const { carouselProducts } = this.props
     return (
-      <div className='main'>
-        <h4>Main</h4>
+      <div>
+        <Carousel products={carouselProducts} />
       </div>
     )
   }
