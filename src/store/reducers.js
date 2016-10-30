@@ -6,6 +6,7 @@ import userReducer from 'redux/modules/User'
 import { reducer as formReducer } from 'redux-form'
 import searchBar from 'redux/modules/SearchBar'
 import searchResults from 'redux/modules/SearchResults'
+import productsReducer from 'redux/modules/Products'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
@@ -18,6 +19,7 @@ export const makeRootReducer = (asyncReducers) => {
       bar: searchBar,
       results: searchResults
     }),
+    products: productsReducer,
     ...asyncReducers
   })
 }
