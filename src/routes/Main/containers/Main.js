@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
 // import { bindActionCreators } from 'redux'
 import { actions } from '../modules/Main'
-import carouselProducts from '../selectors/carouselProducts'
+import pageProducts from 'redux/selectors/pageProducts'
 
 import Main from '../components/Main'
 
 /* eslint-disable camelcase */
 const mapStateToProps = (state) => ({
-  carouselProducts: carouselProducts(state)
+  carouselProducts: pageProducts('main_page', 'carouselProducts')(state),
+  newArrivalsProducts: pageProducts('main_page', 'newArrivals')(state)
 })
 /* eslint-enable camelcase */
 
