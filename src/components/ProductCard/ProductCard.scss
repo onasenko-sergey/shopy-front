@@ -1,0 +1,143 @@
+@import '../../styles/variables/colors';
+
+$phase1_delay: .2s;
+$phase1_duration: .3s;
+
+$phase2_delay: .5s;
+$phase2_duration: .3s;
+
+.product-card {
+  position: relative;
+  margin: 67px auto 0;
+  padding: 20px;
+  height: 365px;
+  max-width: 300px;
+  background-color: #fff;
+  text-align: center;
+  overflow: hidden;
+
+  &__image-container {
+    position: relative;
+    height: 240px;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    transition: transform $phase1_duration $phase1_delay;
+    transform-origin: top center;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:after {
+      content: 'Unfortunately image temporaly not available.';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      background-color: #f0f0f0;
+    }
+  }
+
+  &__name {
+    margin-top: 14px;
+    max-height: 48px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    color: $defaultColor;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all $phase1_duration $phase1_delay;
+
+    a, a:active, a:focus, a:hover, a:visited{
+      color: currentColor;
+      text-decoration: none;
+    }
+  }
+
+  &__price {
+    margin-top: 21px;
+    margin-bottom: 0;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 28px;
+    color: $primaryColor;
+  }
+
+  &__bottom-panel {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 170px;
+    opacity: 0;
+  }
+
+  &__colors {
+    margin: 24px 60px 27px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #f2f4f7;
+
+    span {
+      margin-right: 5px;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__icon-btn {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  &:hover {
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+
+    .product-card {
+      &__image-container {
+        transform: scale(.5) translateZ(0);
+      }
+
+      &__name {
+        transform: translateY(-125px);
+        animation: nameMultiline $phase1_duration $phase1_delay both;
+      }
+
+      @keyframes nameMultiline {
+        70%, 100% {
+          color: $primaryColor;
+          overflow: hidden;
+          text-overflow: clip;
+          white-space: normal;
+        }
+      }
+
+      &__price {
+        animation-name: fadeOutDown;
+        animation-fill-mode: both;
+        animation-duration: $phase1_delay;
+      }
+
+      &__bottom-panel {
+        animation-name: fadeInUp;
+        animation-fill-mode: both;
+        animation-duration: $phase2_duration;
+        animation-delay: $phase2_delay;
+      }
+    }
+  }
+}
