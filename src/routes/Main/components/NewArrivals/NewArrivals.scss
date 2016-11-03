@@ -1,0 +1,45 @@
+.new-arrivals {
+  &__more-btn {
+    margin-top: 80px;
+    padding: 22px 0 18px;
+    width: 100%;
+
+    &:active, &:focus {
+      outline: none;
+    }
+
+    &, &:hover, &:focus {
+      border: none;
+    }
+
+    &, &:active, &:hover, &:active:hover, &:focus {
+      background-color: #fff;
+    }
+  }
+
+  &__ellipsis {
+    position: relative;
+
+    &, &:before, &:after {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #ff5912;
+    }
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+    }
+
+    &:before {
+      left: -15px;
+    }
+
+    &:after {
+      right: -15px;
+    }
+  }
+}
