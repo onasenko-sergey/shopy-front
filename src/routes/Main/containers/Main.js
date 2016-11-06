@@ -8,7 +8,8 @@ import Main from '../components/Main'
 /* eslint-disable camelcase */
 const mapStateToProps = (state) => ({
   carouselProducts: pageProducts('main_page', 'carouselProducts')(state),
-  newArrivalsProducts: pageProducts('main_page', 'newArrivals')(state)
+  newArrivalsProducts: pageProducts('main_page', 'newArrivals')(state),
+  saleProducts: pageProducts('main_page', 'saleProduct')(state)
 })
 /* eslint-enable camelcase */
 

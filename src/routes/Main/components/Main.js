@@ -2,11 +2,16 @@ import React, { Component, PropTypes } from 'react'
 import './Main.scss'
 import Carousel from './Carousel'
 import NewArrivals from '../containers/NewArrivals'
+import Sale from './Sale'
+import Grid from 'react-bootstrap/lib/Grid'
+import Row from 'react-bootstrap/lib/Row'
+import Col from 'react-bootstrap/lib/Col'
 
 const propTypes = {
   init: PropTypes.func.isRequired,
   carouselProducts: PropTypes.array.isRequired,
-  newArrivalsProducts: PropTypes.array.isRequired
+  newArrivalsProducts: PropTypes.array.isRequired,
+  saleProducts: PropTypes.array.isRequired
 }
 
 class Main extends Component {
@@ -16,11 +21,18 @@ class Main extends Component {
   }
 
   render () {
-    const { carouselProducts, newArrivalsProducts } = this.props
+    const { carouselProducts, newArrivalsProducts, saleProducts } = this.props
     return (
       <div>
         <Carousel products={carouselProducts} />
         <NewArrivals products={newArrivalsProducts} />
+        <Grid>
+          <Row>
+            <Col md={7}>
+              <Sale products={saleProducts} />
+            </Col>
+          </Row>
+        </Grid>
       </div>
     )
   }
