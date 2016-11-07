@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import './Main.scss'
-import Carousel from './Carousel'
-import NewArrivals from '../containers/NewArrivals'
-import Sale from './Sale'
 import Grid from 'react-bootstrap/lib/Grid'
 import Row from 'react-bootstrap/lib/Row'
 import Col from 'react-bootstrap/lib/Col'
+import Carousel from './Carousel'
+import NewArrivals from '../containers/NewArrivals'
+import Sale from './Sale'
+import Advertisement from './Advertisement'
 
 const propTypes = {
   init: PropTypes.func.isRequired,
@@ -30,6 +31,9 @@ class Main extends Component {
           <Row>
             <Col md={7}>
               <Sale products={saleProducts} />
+            </Col>
+            <Col md={5}>
+              <Advertisement />
             </Col>
           </Row>
         </Grid>

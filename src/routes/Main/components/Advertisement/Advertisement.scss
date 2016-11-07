@@ -1,0 +1,27 @@
+.advertisement {
+  margin-top: 70px;
+  padding: 28px 28px 13px;
+  background-color: #fff;
+  text-align: center;
+
+  &__header {
+    margin-bottom: 7px;
+    font-size: 16px;
+
+    span {
+      color: #ff5912;
+    }
+  }
+
+  &__size {
+    font-size: 13px;
+    letter-spacing: 6px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .advertisement {
+    margin-top: 0;
+  }
+}
+
