@@ -45,7 +45,8 @@ const propTypes = {
       }
     }
   ),
-  component: PropTypes.func.isRequired
+  component: PropTypes.func.isRequired,
+  onComplete: PropTypes.func
 }
 
 const defaultProps = {
@@ -133,7 +134,7 @@ class CollectionGrid extends PureComponent {
       row = Math.ceil(quantity / col)
     }
     // if number of displayed items reached collection length call onComplete callback
-    if ((quantity === length) && (pQuantity !== length)) props.onComplete()
+    if ((quantity === length) && (pQuantity !== length)) props.onComplete && props.onComplete()
     return { col, row, quantity }
   }
 
