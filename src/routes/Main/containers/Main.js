@@ -9,7 +9,8 @@ import Main from '../components/Main'
 const mapStateToProps = (state) => ({
   carouselProducts: pageProducts('main_page', 'carouselProducts')(state),
   newArrivalsProducts: pageProducts('main_page', 'newArrivals')(state),
-  saleProducts: pageProducts('main_page', 'saleProduct')(state)
+  saleProducts: pageProducts('main_page', 'saleProduct')(state),
+  bestSalesProducts: pageProducts('main_page', 'bestSales')(state)
 })
 /* eslint-enable camelcase */
 

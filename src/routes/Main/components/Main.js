@@ -7,12 +7,14 @@ import Carousel from './Carousel'
 import NewArrivals from '../containers/NewArrivals'
 import Sale from './Sale'
 import Advertisement from './Advertisement'
+import BestSales from './BestSales'
 
 const propTypes = {
   init: PropTypes.func.isRequired,
   carouselProducts: PropTypes.array.isRequired,
   newArrivalsProducts: PropTypes.array.isRequired,
-  saleProducts: PropTypes.array.isRequired
+  saleProducts: PropTypes.array.isRequired,
+  bestSalesProducts: PropTypes.array.isRequired
 }
 
 class Main extends Component {
@@ -22,7 +24,7 @@ class Main extends Component {
   }
 
   render () {
-    const { carouselProducts, newArrivalsProducts, saleProducts } = this.props
+    const { carouselProducts, newArrivalsProducts, saleProducts, bestSalesProducts } = this.props
     return (
       <div>
         <Carousel products={carouselProducts} />
@@ -37,6 +39,7 @@ class Main extends Component {
             </Col>
           </Row>
         </Grid>
+        <BestSales products={bestSalesProducts} />
       </div>
     )
   }
