@@ -11,50 +11,49 @@ export const constants = {
 let initiated
 
 function init (initOnce) {
-  if (!initOnce || !initiated) {
-    initiated = true
-    return (dispatch) => {
-      dispatch({
-        type: constants.GET_PRODUCTS,
-        payload: {
-          promise: getCarouselProducts().catch((err) => {
-            dispatch(errorsActions.add(err))
-            throw err
-          }),
-          key: 'carouselProducts'
-        }
-      })
-      dispatch({
-        type: constants.GET_PRODUCTS,
-        payload: {
-          promise: getNewArrivals().catch((err) => {
-            dispatch(errorsActions.add(err))
-            throw err
-          }),
-          key: 'newArrivals'
-        }
-      })
-      dispatch({
-        type: constants.GET_PRODUCTS,
-        payload: {
-          promise: getSaleProduct().catch((err) => {
-            dispatch(errorsActions.add(err))
-            throw err
-          }),
-          key: 'saleProduct'
-        }
-      })
-      dispatch({
-        type: constants.GET_PRODUCTS,
-        payload: {
-          promise: getBestSales().catch((err) => {
-            dispatch(errorsActions.add(err))
-            throw err
-          }),
-          key: 'bestSales'
-        }
-      })
-    }
+  if (initOnce && initiated) return { type: null }
+  initiated = true
+  return (dispatch) => {
+    dispatch({
+      type: constants.GET_PRODUCTS,
+      payload: {
+        promise: getCarouselProducts().catch((err) => {
+          dispatch(errorsActions.add(err))
+          throw err
+        }),
+        key: 'carouselProducts'
+      }
+    })
+    dispatch({
+      type: constants.GET_PRODUCTS,
+      payload: {
+        promise: getNewArrivals().catch((err) => {
+          dispatch(errorsActions.add(err))
+          throw err
+        }),
+        key: 'newArrivals'
+      }
+    })
+    dispatch({
+      type: constants.GET_PRODUCTS,
+      payload: {
+        promise: getSaleProduct().catch((err) => {
+          dispatch(errorsActions.add(err))
+          throw err
+        }),
+        key: 'saleProduct'
+      }
+    })
+    dispatch({
+      type: constants.GET_PRODUCTS,
+      payload: {
+        promise: getBestSales().catch((err) => {
+          dispatch(errorsActions.add(err))
+          throw err
+        }),
+        key: 'bestSales'
+      }
+    })
   }
 }
 
