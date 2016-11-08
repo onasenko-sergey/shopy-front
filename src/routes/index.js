@@ -1,6 +1,7 @@
 import CoreLayout from 'layouts/CoreLayout'
 import User from './User'
 import Main from './Main'
+import Products from './Products'
 
 export const createRoutes = (store) => {
   let routes = [
@@ -9,7 +10,8 @@ export const createRoutes = (store) => {
       component: CoreLayout,
       indexRoute: Main(store),
       childRoutes: [
-        User(store)
+        User(store),
+        Products(store)
       ]
     }
   ]
