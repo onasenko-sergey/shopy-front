@@ -29,7 +29,7 @@ class Main extends Component {
       <div>
         <Carousel products={carouselProducts} />
         <NewArrivals products={newArrivalsProducts} />
-        <Grid>
+        <Grid hidden={!saleProducts.length}>
           <Row>
             <Col md={7}>
               <Sale products={saleProducts} />
