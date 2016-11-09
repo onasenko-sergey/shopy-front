@@ -1,15 +1,26 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import './Product.scss'
 
 const propTypes = {
+  init: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired
 }
 
-export const Product = ({ params }) => (
-  <div className='product'>
-    <h4>Product: {params.id}</h4>
-  </div>
-)
+class Product1 extends Component {
+  componentWillMount () {
+    const { init, params } = this.props
+    init(params.id)
+  }
 
-Product.propTypes = propTypes
-export default Product
+  render () {
+    const {  } = this.props
+    return (
+      <div>
+      </div>
+    )
+  }
+
+}
+
+Product1.propTypes = propTypes
+export default Product1
