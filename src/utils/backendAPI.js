@@ -39,6 +39,14 @@ export function getBestSales () {
   return backend.get('/products/best-sales')
 }
 
+export function getProduct (id) {
+  return backend.get('/products/' + id)
+}
+
+export function getRelatedProducts (id) {
+  return backend.get('/products/' + id + '/related')
+}
+
 export function getProducts () {
   return backend.post('/products')
 }
