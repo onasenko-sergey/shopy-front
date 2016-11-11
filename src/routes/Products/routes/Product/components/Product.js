@@ -1,10 +1,12 @@
 import React, { PropTypes, Component } from 'react'
 import './Product.scss'
+import ProductOrder from 'components/ProductOrder'
 import RelatedProducts from './RelatedProducts'
 
 const propTypes = {
   init: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
+  product: PropTypes.object,
   relatedProducts: PropTypes.array
 }
 
@@ -15,9 +17,10 @@ class Product1 extends Component {
   }
 
   render () {
-    const { relatedProducts } = this.props
+    const { product, relatedProducts } = this.props
     return (
       <div>
+        <ProductOrder product={product} />
         <RelatedProducts products={relatedProducts} />
       </div>
     )
