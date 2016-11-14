@@ -1,0 +1,32 @@
+@import '../../../../styles/variables/colors';
+
+.size-input {
+  display: inline-block;
+  margin: 0 20px;
+
+  &__size{
+    font-weight: 500;
+
+    &:last-child .size-input__hyphen {
+      display: none;
+    }
+  }
+
+  &__radio {
+    display: none;
+
+    &:checked + .size-input__label {
+      font-size: 19px;
+      color: $primaryColor;
+    }
+  }
+
+  &__label {
+    text-transform: uppercase;
+    font-size: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
