@@ -1,0 +1,9 @@
+.product-menu {
+  margin-left: 0;
+  display: inline-block;
+
+  &>&__item {
+    padding-right: 9px;
+    padding-left: 9px;
+  }
+}

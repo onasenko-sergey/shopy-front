@@ -1,0 +1,94 @@
+@import '../../../styles/variables/colors';
+
+.order-form {
+  margin-top: 32px;
+  text-align: center;
+
+  &__row {
+    border-top: 1px solid #edeff1;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__size, &__quantity {
+    margin-top: 38px;
+    margin-bottom: 31px;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  &__price {
+    margin-top: 36px;
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  &__actions {
+    margin-top: 30px;
+  }
+
+  &__buttons {
+    margin-top: 18px;
+    text-align: center;
+    clear: both;
+  }
+
+  &__btn-submit {
+    padding: 13px 23px 11px;
+    border-radius: 25px;
+    font-size: 18px;
+    text-transform: capitalize;
+
+    &, &:active, &:hover, &:active:hover, &:focus {
+      color: #fff;
+      background-color: $primaryColor;
+      outline: none;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .order-form {
+    &__price {
+      margin-top: 56px;
+      text-align: left;
+      float: left;
+    }
+
+    &__actions {
+      margin-top: 50px;
+      text-align: right;
+    }
+
+    &__buttons {
+      margin-top: 38px;
+
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .order-form {
+    &__size {
+      text-align: left;
+      border-right: 1px solid #edeff1;
+    }
+
+    &__quantity {
+      text-align: right;
+    }
+
+    &__actions {
+      position: absolute;
+      right: 160px;
+    }
+
+    &__buttons {
+      text-align: right;
+      clear: none;
+    }
+  }
+}
