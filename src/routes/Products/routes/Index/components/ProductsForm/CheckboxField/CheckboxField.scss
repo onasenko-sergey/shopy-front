@@ -1,0 +1,12 @@
+.checkbox-field {
+  display: block;
+
+  &__input, &__label {
+    cursor: pointer
+  }
+
+  &__label {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}
