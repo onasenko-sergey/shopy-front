@@ -47,6 +47,6 @@ export function getRelatedProducts (id) {
   return backend.get('/products/' + id + '/related')
 }
 
-export function getProducts () {
-  return backend.post('/products')
+export function getProducts (data) {
+  return backend.post('/products', data)
 }

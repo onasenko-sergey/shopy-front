@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
-// import { actions } from '../modules/Index'
+import { actions } from '../modules/Index'
+import pageProducts from 'redux/selectors/pageProducts'
 
 import Index from '../components/Index'
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+  products: pageProducts('products_page', 'products')(state)
+})
 
-const mapDispatchToProps = (dispatch) => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index)
+export default connect(mapStateToProps, actions)(Index)
