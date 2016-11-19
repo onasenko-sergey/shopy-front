@@ -16,6 +16,11 @@ class Product1 extends Component {
     init(params.id)
   }
 
+  componentWillUpdate (nextProps) {
+    const { init, params: { id } } = nextProps
+    if (id !== this.props.params.id) init(id)
+  }
+
   render () {
     const { product, relatedProducts } = this.props
     return (
