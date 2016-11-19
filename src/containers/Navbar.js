@@ -22,5 +22,8 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  null,
+  // as navigation depends on external react-router state, thus component is no longer pure
+  { pure: false }
 )(withRouter(Navbar))
