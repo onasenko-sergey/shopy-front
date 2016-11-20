@@ -4,7 +4,7 @@ import Section from 'components/Section'
 import Grid from 'react-bootstrap/lib/Grid'
 import Row from 'react-bootstrap/lib/Row'
 import Col from 'react-bootstrap/lib/Col'
-import ProductsForm from 'forms/Products'
+import ProductsForm from '../forms/Products'
 import ProductsCollection from '../containers/ProductsCollection'
 
 const propTypes = {

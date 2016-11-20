@@ -1,5 +1,5 @@
 import { reduxForm } from 'redux-form'
-import NewsLetter from 'components/NewsLetter/NewsLetterForm'
+import NewsLetter from 'layouts/CoreLayout/components/NewsLetter/NewsLetterForm'
 
 const validate = (values) => {
   const errors = {}

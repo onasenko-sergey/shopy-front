@@ -1,7 +1,7 @@
 import React from 'react'
 import './NewsLetter.scss'
 import Section from 'components/Section'
-import NewsLetterForm from 'forms/NewsLetter'
+import NewsLetterForm from '../../forms/NewsLetter'
 import Grid from 'react-bootstrap/lib/Grid'
 import Row from 'react-bootstrap/lib/Row'
 import Col from 'react-bootstrap/lib/Col'

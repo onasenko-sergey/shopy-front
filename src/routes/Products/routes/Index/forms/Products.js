@@ -1,5 +1,5 @@
 import { reduxForm } from 'redux-form'
-import Products from 'routes/Products/routes/Index/components/ProductsForm'
+import Products from '../components/ProductsForm'
 
 const validate = (values) => {
   const errors = {}

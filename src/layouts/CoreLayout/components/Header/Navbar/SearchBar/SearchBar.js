@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import './SearchBar.scss'
 import Collapse from 'react-bootstrap/lib/Collapse'
-import SearchBarForm from 'forms/SearchBar'
+import SearchBarForm from '../../../../forms/SearchBar'
 
 const propTypes = {
   setFormRef: PropTypes.func.isRequired,

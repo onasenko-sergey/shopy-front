@@ -1,5 +1,5 @@
 import { reduxForm } from 'redux-form'
-import SearchBar from 'components/Header/Navbar/SearchBar/SearchBarForm'
+import SearchBar from 'layouts/CoreLayout/components/Header/Navbar/SearchBar/SearchBarForm'
 
 const validate = (values) => {
   const errors = {}

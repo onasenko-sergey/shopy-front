@@ -1,28 +1,26 @@
 import { combineReducers } from 'redux'
 import locationReducer from './location'
-import modalsReducer from 'redux/modules/Modals'
+import productsReducer from 'redux/modules/Products'
 import errorsReducer from 'redux/modules/Errors'
 import userReducer from 'redux/modules/User'
 import { reducer as formReducer } from 'redux-form'
-import searchBar from 'redux/modules/SearchBar'
-import searchResults from 'redux/modules/SearchResults'
-import productsReducer from 'redux/modules/Products'
+
+/* eslint-disable camelcase */
+
+import core_layout from 'layouts/CoreLayout/modules'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     location: locationReducer,
-    modals: modalsReducer,
+    form: formReducer,
+    products: productsReducer,
     errors: errorsReducer,
     user: userReducer,
-    form: formReducer,
-    search: combineReducers({
-      bar: searchBar,
-      results: searchResults
-    }),
-    products: productsReducer,
+    core_layout,
     ...asyncReducers
   })
 }
+/* eslint-enable camelcase */
 
 export const injectReducer = (store, { key, reducer }) => {
   store.asyncReducers[key] = reducer

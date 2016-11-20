@@ -1,3 +1,3 @@
-import CoreLayout from './CoreLayout'
+import CoreLayout from './components/CoreLayout'
 
 export default CoreLayout

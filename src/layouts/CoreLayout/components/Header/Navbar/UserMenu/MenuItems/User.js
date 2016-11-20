@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import NavDropdown from 'react-bootstrap/lib/NavDropdown'
 import MenuItem from 'react-bootstrap/lib/MenuItem'
 import Icons from 'components/Icons'
-import LogoutModal from 'components/Modals/LogoutModal'
+import LogoutModal from '../../../../Modals/LogoutModal'
 
 const propTypes = {
   user: PropTypes.object.isRequired,
