@@ -7,9 +7,17 @@ $phase2_delay: .4s;
 $phase2_duration: .3s;
 
 .product-card2 {
-  margin: 67px auto 0;
-  padding: 20px;
-  background-color: #fff;
+  &, &:active, &:focus, &:hover, &:visited{
+    color: currentColor;
+    text-decoration: none;
+  }
+
+
+  &__wrapper {
+    margin: 67px auto 0;
+    padding: 20px;
+    background-color: #fff;
+  }
 
   &__image-container {
     margin: 0 auto;
@@ -51,14 +59,10 @@ $phase2_duration: .3s;
     margin-top: 0;
     margin-bottom: 22px;
     font-size: 18px;
+    color: $defaultColor;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    a, a:active, a:focus, a:hover, a:visited{
-      color: currentColor;
-      text-decoration: none;
-    }
   }
 
   &__stars {

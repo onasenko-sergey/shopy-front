@@ -7,14 +7,20 @@ $phase2_delay: .5s;
 $phase2_duration: .3s;
 
 .product-card {
-  position: relative;
-  margin: 0 auto;
-  padding: 20px;
-  height: 365px;
-  max-width: 300px;
-  background-color: #fff;
-  text-align: center;
-  overflow: hidden;
+  &, &:active, &:focus, &:hover, &:visited{
+    text-decoration: none;
+  }
+
+  &__wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    height: 365px;
+    max-width: 300px;
+    background-color: #fff;
+    text-align: center;
+    overflow: hidden;
+  }
 
   &__image-container {
     position: relative;
@@ -56,11 +62,6 @@ $phase2_duration: .3s;
     text-overflow: ellipsis;
     white-space: nowrap;
     transition: all $phase1_duration $phase1_delay;
-
-    a, a:active, a:focus, a:hover, a:visited{
-      color: currentColor;
-      text-decoration: none;
-    }
   }
 
   &__price {
