@@ -38,7 +38,7 @@ class ProductsCollection extends Component {
               '1200': { col: 3, row: 3 }
             }}
             component={(item, key) => (
-              <Col sm={6} lg={4} key={key}>
+              <Col sm={6} lg={4} key={key} className='products-collection__product-card'>
                 <ProductCard product={item} />
               </Col>
             )}

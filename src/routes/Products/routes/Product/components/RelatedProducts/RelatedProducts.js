@@ -28,7 +28,7 @@ export const RelatedProducts = ({ products }) => {
               '1200': { col: 4, row: 1 }
             }}
             component={(item, key) => (
-              <Col sm={6} md={4} lg={3} key={key}>
+              <Col sm={6} md={4} lg={3} key={key} className='related-products__product-card'>
                 <ProductCard product={item} />
               </Col>
             )}

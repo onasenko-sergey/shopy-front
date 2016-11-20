@@ -1,8 +1,11 @@
 @import '../../../../../../styles/variables/colors';
 
 .products-collection {
+  &__product-card {
+    margin-bottom: 30px;
+  }
+
   &__more-btn {
-    margin-top: 80px;
     padding: 22px 0 18px;
     width: 100%;
 
@@ -43,11 +46,5 @@
     &:after {
       right: -15px;
     }
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .products-collection {
-    margin-top: -67px;
   }
 }
