@@ -8,8 +8,9 @@ import ProductsForm from '../forms/Products'
 import ProductsCollection from '../containers/ProductsCollection'
 
 const propTypes = {
+  init: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
-  init: PropTypes.func.isRequired
+  getProducts: PropTypes.func.isRequired
 }
 
 class Index extends Component {
@@ -19,13 +20,13 @@ class Index extends Component {
   }
 
   render () {
-    const { products } = this.props
+    const { products, getProducts } = this.props
     return (
       <Section className='products-page'>
         <Grid>
           <Row>
             <Col md={4} lg={3} className='products-page__filters'>
-              <ProductsForm onSubmit={(data) => { console.log('Products filter: ', data) }} />
+              <ProductsForm onSubmit={getProducts} />
             </Col>
             <Col md={8} lg={9} className='products-page__collection'>
               <ProductsCollection products={products} />

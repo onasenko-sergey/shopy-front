@@ -7,10 +7,11 @@ import RangeField from './RangeField'
 import { Field } from 'redux-form'
 
 const propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.object.isRequired
 }
 
-export const ProductsForm = ({ handleSubmit }) => (
+export const ProductsForm = ({ handleSubmit, initialValues: { price: { min, max } } }) => (
   <form onSubmit={handleSubmit} className='products-form'>
     <Row>
       <Col sm={6} md={12}>
@@ -33,7 +34,7 @@ export const ProductsForm = ({ handleSubmit }) => (
           className='products-form__price-filter'
           name='price'
           legend='Price Filter'
-          range={{ min: 0, max: 1000 }}
+          range={{ min: min || 0, max: max || 1000 }}
         />
       </Col>
     </Row>
@@ -60,11 +61,11 @@ export const ProductsForm = ({ handleSubmit }) => (
           name='brands'
           legend='Brands'
           fields={[
-            { label: 'Adidas', value: 0 },
-            { label: 'Asics', value: 1 },
-            { label: 'Nike', value: 2 },
-            { label: 'Puma', value: 3 },
-            { label: 'Reebok', value: 4 }
+            { label: 'Adidas', value: 'Adidas' },
+            { label: 'Asics', value: 'Asics' },
+            { label: 'Nike', value: 'Nike' },
+            { label: 'Puma', value: 'Puma' },
+            { label: 'Reebok', value: 'Reebok' }
           ]}
         />
       </Col>

@@ -48,5 +48,35 @@ export function getRelatedProducts (id) {
 }
 
 export function getProducts (data) {
-  return backend.post('/products', data)
+  const body = {}
+  if (data) {
+    const { categories, price, sizes, brands } = data
+    // format request data
+    if (categories.length === 1) {
+      body.categories = categories[0]
+    }
+    if (categories.length > 1) {
+      body.categories = categories
+    }
+    if (price.min != null) {
+      body.priceMin = price.min
+    }
+    if (price.max) {
+      body.priceMax = price.max
+    }
+    if (sizes.length === 1) {
+      body.sizes = sizes[0]
+    }
+    if (sizes.length > 1) {
+      body.sizes = sizes
+    }
+    if (brands.length === 1) {
+      body.brands = brands[0]
+    }
+    if (brands.length > 1) {
+      body.brands = brands
+    }
+  }
+  console.log('body', body)
+  return backend.post('/products', body)
 }

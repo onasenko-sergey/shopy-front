@@ -26,8 +26,8 @@ const init = (initOnce) => {
 
 // Actions
 export const actions = {
-  getProducts,
-  init: init
+  init,
+  getProducts
 }
 
 // Action Handlers
