@@ -1,3 +1,5 @@
+import { submit } from 'redux-form'
+
 // Constants
 
 export const constants = {
@@ -23,13 +25,8 @@ export const actions = {
       payload: query
     }
   },
-  setFormRef: (ref) => {
-    const symbol = Symbol()
-    window[symbol] = ref
-    return {
-      type: constants.SET_REF,
-      payload: symbol
-    }
+  submit: () => {
+    return submit('SearchBar')
   }
 }
 

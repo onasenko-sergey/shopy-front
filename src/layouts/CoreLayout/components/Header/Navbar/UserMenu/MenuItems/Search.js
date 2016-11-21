@@ -16,9 +16,8 @@ class SearchItem extends Component {
   handleClick (event) {
     event.preventDefault()
     const { searchBar, searchBarActions } = this.props
-    // when searchbar is opened, click on search menu icon leads to search form submit
     if (searchBar.isOpened) {
-      window[searchBar.formRefSymbol].submit()
+      searchBarActions.submit()
     } else {
       searchBarActions.openSearch()
     }
