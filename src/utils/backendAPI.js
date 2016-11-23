@@ -50,33 +50,43 @@ export function getRelatedProducts (id) {
 export function getProducts (data) {
   const body = {}
   if (data) {
-    const { categories, price, sizes, brands } = data
+    const { categories, price, sizes, brands, page } = data
     // format request data
-    if (categories.length === 1) {
-      body.categories = categories[0]
+    if (categories) {
+      if (categories.length === 1) {
+        body.categories = categories[0]
+      }
+      if (categories.length > 1) {
+        body.categories = categories
+      }
     }
-    if (categories.length > 1) {
-      body.categories = categories
+    if (price) {
+      if (price.min != null) {
+        body.priceMin = price.min
+      }
+      if (price.max) {
+        body.priceMax = price.max
+      }
     }
-    if (price.min != null) {
-      body.priceMin = price.min
+    if (sizes) {
+      if (sizes.length === 1) {
+        body.sizes = sizes[0]
+      }
+      if (sizes.length > 1) {
+        body.sizes = sizes
+      }
     }
-    if (price.max) {
-      body.priceMax = price.max
+    if (brands) {
+      if (brands.length === 1) {
+        body.brands = brands[0]
+      }
+      if (brands.length > 1) {
+        body.brands = brands
+      }
     }
-    if (sizes.length === 1) {
-      body.sizes = sizes[0]
-    }
-    if (sizes.length > 1) {
-      body.sizes = sizes
-    }
-    if (brands.length === 1) {
-      body.brands = brands[0]
-    }
-    if (brands.length > 1) {
-      body.brands = brands
+    if (page) {
+      body.page = page
     }
   }
-  console.log('body', body)
   return backend.post('/products', body)
 }

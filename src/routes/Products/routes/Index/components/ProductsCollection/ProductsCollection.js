@@ -1,59 +1,39 @@
 import React, { Component, PropTypes } from 'react'
 import './ProductsCollection.scss'
 import CollectionGrid from 'containers/CollectionGrid'
-import ProductCard from 'components/ProductCard'
-import Row from 'react-bootstrap/lib/Row'
-import Col from 'react-bootstrap/lib/Col'
-import Button from 'react-bootstrap/lib/Button'
+import CollectionView from './CollectionView'
 
 const propTypes = {
-  products: PropTypes.array.isRequired,
-  btnMoreHidden: PropTypes.bool.isRequired,
-  onComplete: PropTypes.func
+  products: PropTypes.array.isRequired
 }
 
 class ProductsCollection extends Component {
   constructor (props) {
     super(props)
 
-    this.handleMoreClick = this.handleMoreClick.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
-  handleMoreClick () {
-    this._collection.addRows(2)
+  reset () {
+    this._collection && this._collection.reset()
   }
 
   render () {
-    const { products, btnMoreHidden, onComplete } = this.props
+    const { products, ...rest } = this.props
     if (!products.length) return null
     return (
-      <div className='products-collection'>
-        <Row>
-          <CollectionGrid
-            ref={(collection) => { this._collection = collection }}
-            collection={products}
-            gridMap={{
-              '0': { col: 1, row: 3 },
-              '768': { col: 2, row: 3 },
-              '1200': { col: 3, row: 3 }
-            }}
-            component={(item, key) => (
-              <Col sm={6} lg={4} key={key} className='products-collection__product-card'>
-                <ProductCard product={item} />
-              </Col>
-            )}
-            onComplete={onComplete}
-          />
-        </Row>
-        <Button
-          onClick={this.handleMoreClick}
-          hidden={btnMoreHidden}
-          className='products-collection__more-btn'
-        >
-          <span className='products-collection__ellipsis' />
-        </Button>
-      </div>
-
+      <CollectionGrid
+        collection={products}
+        gridMap={{
+          '0': { col: 1, row: 3 },
+          '768': { col: 2, row: 3 },
+          '1200': { col: 3, row: 3 }
+        }}
+        {...rest}
+        ref={(collection) => { this._collection = collection }}
+      >
+        <CollectionView />
+      </CollectionGrid>
     )
   }
 }

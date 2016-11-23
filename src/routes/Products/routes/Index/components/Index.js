@@ -5,12 +5,14 @@ import Grid from 'react-bootstrap/lib/Grid'
 import Row from 'react-bootstrap/lib/Row'
 import Col from 'react-bootstrap/lib/Col'
 import ProductsForm from '../forms/Products'
-import ProductsCollection from '../containers/ProductsCollection'
+import ProductsCollection from './ProductsCollection'
 
 const propTypes = {
   init: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
-  getProducts: PropTypes.func.isRequired
+  lastProduct: PropTypes.bool.isRequired,
+  getProducts: PropTypes.func.isRequired,
+  getMoreProducts: PropTypes.func.isRequired
 }
 
 class Index extends Component {
@@ -20,16 +22,26 @@ class Index extends Component {
   }
 
   render () {
-    const { products, getProducts } = this.props
+    const { products, lastProduct, getProducts, getMoreProducts } = this.props
     return (
       <Section className='products-page'>
         <Grid>
           <Row>
             <Col md={4} lg={3} className='products-page__filters'>
-              <ProductsForm onSubmit={getProducts} />
+              <ProductsForm
+                onSubmit={(values) => {
+                  getProducts(values)
+                  this._collection.reset()
+                }}
+              />
             </Col>
             <Col md={8} lg={9} className='products-page__collection'>
-              <ProductsCollection products={products} />
+              <ProductsCollection
+                products={products}
+                lastProduct={lastProduct}
+                getMoreProducts={getMoreProducts}
+                ref={(collection) => { this._collection = collection }}
+              />
             </Col>
           </Row>
         </Grid>
