@@ -1,4 +1,4 @@
-import React, { PureComponent, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 const propTypes = {
   collection: PropTypes.array.isRequired,
@@ -45,8 +45,7 @@ const propTypes = {
       }
     }
   ),
-  component: PropTypes.func.isRequired,
-  onComplete: PropTypes.func
+  children: PropTypes.element.isRequired
 }
 
 const defaultProps = {
@@ -56,11 +55,13 @@ const defaultProps = {
   }
 }
 
-class CollectionGrid extends PureComponent {
+class CollectionGrid extends Component {
   constructor (props) {
     super(props)
 
     this.resizeGrid = this.resizeGrid.bind(this)
+    this.addRows = this.addRows.bind(this)
+    this.reset = this.reset.bind(this)
 
     this.state = this.newGrid(null, props)
   }
@@ -133,8 +134,6 @@ class CollectionGrid extends PureComponent {
       quantity = length
       row = Math.ceil(quantity / col)
     }
-    // if number of displayed items reached collection length call onComplete callback
-    if ((quantity === length) && (pQuantity !== length)) props.onComplete && props.onComplete()
     return { col, row, quantity }
   }
 
@@ -170,14 +169,12 @@ class CollectionGrid extends PureComponent {
   }
 
   render () {
-    const { collection, component } = this.props
-    const { col, row } = this.state
-    const items = collection
-      .slice(0, col * row)
-      .map((item, i) => (component(item, i)))
-    return (
-      <div>{items}</div>
-    )
+    return React.cloneElement(this.props.children, {
+      ...this.props,
+      ...this.state,
+      addRows: this.addRows,
+      reset: this.reset
+    })
   }
 }
 
