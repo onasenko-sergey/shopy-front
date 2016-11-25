@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PureComponent, PropTypes } from 'react'
 
 const propTypes = {
   collection: PropTypes.array.isRequired,
@@ -55,15 +55,15 @@ const defaultProps = {
   }
 }
 
-class CollectionGrid extends Component {
+class CollectionGrid extends PureComponent {
   constructor (props) {
     super(props)
+
+    this.state = this.validateGrid(this.getDefaultGrid(props), props)
 
     this.resizeGrid = this.resizeGrid.bind(this)
     this.addRows = this.addRows.bind(this)
     this.reset = this.reset.bind(this)
-
-    this.state = this.newGrid(null, props)
   }
 
   /**
@@ -71,65 +71,30 @@ class CollectionGrid extends Component {
    *
    * Find col and row grid params for current window width.
    * @param {{gridMap: object}} props
-   * @returns {{col: number, row: number}}
+   * @returns {{col: number, row: number, quantity: number}}
    */
   getDefaultGrid (props) {
     const { gridMap } = props
     const width = window.innerWidth
-    return Object
+    let { col, row } = Object
       .keys(gridMap)
       .reduce(
         (acc, cur) => (parseInt(cur) <= width ? gridMap[cur] : acc),
         { col: 1, row: 1 }
       )
+    return { col, row, quantity: col * row }
   }
 
   /**
-   * Calculate new grid params.
-   * @param {?object} prevState
+   * Check grid limitations.
+   * @param {object} newGrid
    * @param {object} props
-   * @param {?number} inc
-   * @returns {?{col: number, row: number, quantity: number}}
+   * @returns {{col: number, row: number, quantity: number}}
    */
-  newGrid (prevState, props, inc) {
-    const { col: pCol, row: pRow, quantity: pQuantity } = prevState || {}
-    const { col: dCol, row: dRow } = this.getDefaultGrid(props)
+  validateGrid (newGrid, props) {
+    let { col, row, quantity } = newGrid
     const { length } = props.collection
-    let col, row, quantity
-    if (inc) {
-      // if increment is assigned
-      col = pCol
-      // increase row count
-      row = pRow + inc
-    } else {
-      // else
-      if (!prevState) {
-        // initial call
-        col = dCol // set new col count to value received from
-        row = dRow // props by means of gridMap
-      } else {
-        // resize
-        if (dCol === pCol) return // unless default col count equals current col count
-        // calculate new grid
-        col = dCol
-        // if new number of columns is 0 - set row to 0 and return previous state quantity
-        if (col === 0) return { col, row: 0, quantity: pQuantity }
-        if (pQuantity === 0) {
-          // if previous state quantity is 0 use default number of rows
-          row = dRow
-        } else {
-          // else find new row count
-          row = Math.ceil(pQuantity / col)
-        }
-      }
-    }
-    // if calculated grid is less then default grid declared for this width, use defaults
-    if (col * row < dCol * dRow) {
-      col = dCol
-      row = dRow
-    }
-    quantity = col * row // quantity is supposed to be a number of at least once displayed items
-    // if collection length is less then grid - shrink quantity and number of rows
+    // if collection items length is less then grid - shrink quantity and number of rows
     if (length < quantity) {
       quantity = length
       row = Math.ceil(quantity / col)
@@ -138,26 +103,59 @@ class CollectionGrid extends Component {
   }
 
   /**
-   * Add 'inc' rows
-   * @param {number} inc
-   */
-  addRows (inc = 1) {
-    if (isNaN(inc) || (inc < 1)) return
-    this.setState((prevState, props) => this.newGrid(prevState, props, inc))
-  }
-
-  /**
    * Set default grid params received from gridMap prop
    */
   reset () {
-    this.setState((prevState, props) => this.newGrid(null, props))
+    this.setState((prevState, props) => this.validateGrid(this.getDefaultGrid(props), props))
+  }
+
+  /**
+   * Add 'inc' rows
+   * @param {?number} inc
+   */
+  addRows (inc = 1) {
+    if (isNaN(inc) || (inc < 1)) return
+    // if increment is assigned
+    let { col, row } = this.state
+    // increase current row count
+    row += inc
+    this.setState((prevState, props) => this.validateGrid({ col, row, quantity: col * row }, props))
   }
 
   /**
    * Update grid to fit new window width
    */
   resizeGrid () {
-    this.setState((prevState, props) => this.newGrid(prevState, props))
+    const { col: dCol, row: dRow, quantity: dQuantity } = this.getDefaultGrid(this.props)
+    const { col: cCol, quantity: cQuantity } = this.state
+    // unless default col count equals current col count
+    if (dCol === cCol) return
+    // calculate new grid
+    // if new number of columns or rows is 0, preserve current state quantity
+    if (dCol === 0 || dRow === 0) {
+      this.setState((prevState, props) => this.validateGrid({ col: 0, row: 0, quantity: cQuantity }, props))
+    } else {
+      let row = Math.ceil(cQuantity / dCol)
+      if (dCol * row < dQuantity) {
+        row = dRow
+      }
+      this.setState((prevState, props) => this.validateGrid({ col: dCol, row, quantity: dCol * row }, props))
+    }
+  }
+
+  /**
+   * Update quantity when collection changes
+   */
+  changeQuantity () {
+    const { col: dCol, row: dRow, quantity: dQuantity } = this.getDefaultGrid(this.props)
+    let { col, row } = this.state
+    // if calculated grid is less then default grid declared for this width, use defaults
+    if (col * row < dQuantity) {
+      col = dCol
+      row = dRow
+    }
+
+    this.setState((prevState, props) => this.validateGrid({ col, row, quantity: col * row }, props))
   }
 
   componentDidMount () {
@@ -166,6 +164,13 @@ class CollectionGrid extends Component {
 
   componentWillUnmount () {
     window.removeEventListener('resize', this.resizeGrid)
+  }
+
+  componentWillUpdate (nextProps) {
+    if (this.props.collection.length !== nextProps.collection.length) {
+      // update quantity when collection changes
+      this.changeQuantity()
+    }
   }
 
   render () {
