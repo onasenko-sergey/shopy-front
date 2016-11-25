@@ -1,4 +1,5 @@
 import { injectReducer } from 'store/reducers'
+import requireAuth from 'containers/RequireAuthHOC'
 
 export default (store) => ({
   path: 'profile',
@@ -9,7 +10,7 @@ export default (store) => ({
     require.ensure([], (require) => {
       /*  Webpack - use require callback to define
           dependencies for bundling   */
-      const Profile = require('./containers/Profile').default
+      const Profile = requireAuth(require('./containers/Profile').default)
       const reducer = require('./modules/Profile').default
 
       /*  Add the reducer to the store on key 'counter'  */
