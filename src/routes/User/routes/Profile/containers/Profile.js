@@ -1,11 +1,8 @@
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
-// import { actions } from '../modules/Profile'
+import { actions } from '../modules/Profile'
 
 import Profile from '../components/Profile'
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = ({ profile_page: { profile } }) => ({ profile })
 
-const mapDispatchToProps = (dispatch) => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, actions)(Profile)

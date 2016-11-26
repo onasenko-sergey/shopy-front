@@ -1,3 +1,11 @@
 .profile {
+  margin: 60px auto 0;
+  max-width: 440px;
+  text-align: center;
+}
 
+@media screen and (min-width: 768px) {
+  .profile {
+    margin: 120px auto 0;
+  }
 }

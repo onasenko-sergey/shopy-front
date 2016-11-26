@@ -90,3 +90,7 @@ export function getProducts (data) {
   }
   return backend.post('/products', body)
 }
+
+export function getProfile () {
+  return backend.get('auth/profile')
+}
