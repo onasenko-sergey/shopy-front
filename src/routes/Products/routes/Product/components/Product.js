@@ -26,7 +26,7 @@ class Product1 extends Component {
     return (
       <div>
         <ProductOrder product={product} />
-        <RelatedProducts products={relatedProducts} />
+        <RelatedProducts collection={relatedProducts} />
       </div>
     )
   }
