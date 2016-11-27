@@ -28,7 +28,7 @@ class Main extends Component {
     return (
       <div>
         <Carousel products={carouselProducts} />
-        <NewArrivals products={newArrivalsProducts} />
+        <NewArrivals collection={newArrivalsProducts} />
         <Grid hidden={!saleProducts.length}>
           <Row>
             <Col md={7}>
@@ -39,7 +39,7 @@ class Main extends Component {
             </Col>
           </Row>
         </Grid>
-        <BestSales products={bestSalesProducts} />
+        <BestSales collection={bestSalesProducts} />
       </div>
     )
   }
