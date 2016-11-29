@@ -1,42 +1,63 @@
 import React, { Component, PropTypes } from 'react'
 import './ProductsCollection.scss'
-import CollectionGrid from 'containers/CollectionGrid'
-import CollectionView from './CollectionView'
+import CollectionGridHOC from 'containers/CollectionGridHOC'
+import ProductCard from 'components/ProductCard'
+import Row from 'react-bootstrap/lib/Row'
+import Col from 'react-bootstrap/lib/Col'
+import Button from 'react-bootstrap/lib/Button'
 
 const propTypes = {
-  products: PropTypes.array.isRequired
+  collection: PropTypes.array,
+  col: PropTypes.number,
+  row: PropTypes.number,
+  quantity: PropTypes.number,
+  addRows: PropTypes.func,
+  lastProduct: PropTypes.bool,
+  getMoreProducts: PropTypes.func
 }
 
 class ProductsCollection extends Component {
-  constructor (props) {
-    super(props)
-
-    this.reset = this.reset.bind(this)
-  }
-
-  reset () {
-    this._collection && this._collection.reset()
+  componentWillUpdate (nextProps) {
+    // if all loaded products are displayed - try to load more
+    const { collection, quantity, getMoreProducts } = this.props
+    if (!nextProps.lastProduct && (nextProps.quantity !== 0) &&
+      (nextProps.collection.length === nextProps.quantity) && (collection.length !== quantity)) {
+      getMoreProducts()
+    }
   }
 
   render () {
-    const { products, ...rest } = this.props
-    if (!products.length) return null
+    const { collection, col, row, quantity, addRows, lastProduct } = this.props
     return (
-      <CollectionGrid
-        collection={products}
-        gridMap={{
-          '0': { col: 1, row: 3 },
-          '768': { col: 2, row: 3 },
-          '1200': { col: 3, row: 3 }
-        }}
-        {...rest}
-        ref={(collection) => { this._collection = collection }}
-      >
-        <CollectionView />
-      </CollectionGrid>
+      <div>
+        <Row>
+          {
+            collection
+              .slice(0, col * row)
+              .map((item) => (
+                <Col sm={6} lg={4} key={item._id} className='products-collection__product-card'>
+                  <ProductCard product={item} />
+                </Col>
+              ))
+          }
+        </Row>
+        <Button
+          onClick={() => { addRows(2) }}
+          hidden={!collection.length || (collection.length === quantity) && lastProduct}
+          className='products-collection__more-btn'
+        >
+          <span className='products-collection__ellipsis' />
+        </Button>
+      </div>
     )
   }
 }
 
 ProductsCollection.propTypes = propTypes
-export default ProductsCollection
+export default CollectionGridHOC({
+  gridMap: {
+    '0': { col: 1, row: 3 },
+    '768': { col: 2, row: 3 },
+    '1200': { col: 3, row: 3 }
+  }
+})(ProductsCollection)

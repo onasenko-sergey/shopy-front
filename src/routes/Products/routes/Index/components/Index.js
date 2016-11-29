@@ -31,16 +31,17 @@ class Index extends Component {
               <ProductsForm
                 onSubmit={(values) => {
                   getProducts(values)
-                  this._collection.reset()
+                  this.refs.collection.getCollectionGridInstance().reset()
                 }}
               />
             </Col>
             <Col md={8} lg={9} className='products-page__collection'>
               <ProductsCollection
-                products={products}
+                collection={products}
                 lastProduct={lastProduct}
                 getMoreProducts={getMoreProducts}
-                ref={(collection) => { this._collection = collection }}
+                withRef
+                ref='collection'
               />
             </Col>
           </Row>
