@@ -11,9 +11,9 @@ export const constants = {
 let initiated
 
 function init (initOnce) {
-  if (initOnce && initiated) return { type: null }
-  initiated = true
   return (dispatch) => {
+    if (initOnce && initiated) return
+    initiated = true
     dispatch({
       type: constants.GET_PRODUCTS,
       payload: {
