@@ -92,5 +92,21 @@ export function getProducts (data) {
 }
 
 export function getProfile () {
-  return backend.get('auth/profile')
+  return backend.get('/auth/profile')
+}
+
+export function getCart () {
+  return backend.get('/cart')
+}
+
+export function addToCart (id, data) {
+  return backend.post('/cart/products/' + id, data)
+}
+
+export function removeFromCart (id) {
+  return backend.delete('/cart/products/' + id)
+}
+
+export function updateCartItem (id, data) {
+  return backend.patch('/cart/products/' + id, data)
 }
