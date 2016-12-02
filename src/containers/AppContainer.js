@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { applyRouterMiddleware, browserHistory, Router } from 'react-router'
 import { useScroll } from 'react-router-scroll'
 import { Provider } from 'react-redux'
+import { actions as userActions } from 'redux/modules/User'
 
 class AppContainer extends Component {
   static propTypes = {
@@ -10,6 +11,11 @@ class AppContainer extends Component {
       PropTypes.array
     ]).isRequired,
     store  : PropTypes.object.isRequired
+  }
+
+  componentWillMount () {
+    const { store } = this.props
+    store.dispatch(userActions.init())
   }
 
   shouldComponentUpdate () {

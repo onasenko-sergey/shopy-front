@@ -2,6 +2,7 @@ import { callVkAuth, getVkAuthPromise } from 'utils/vkAuth'
 import { authVk, setAuthHeader, resetAuthHeader } from 'utils/backendAPI'
 import { request, reject, resolve } from 'redux-promised'
 import { actions as errorsActions } from './Errors'
+import { actions as cartActions } from './Cart'
 
 // Constants
 
@@ -12,6 +13,15 @@ export const constants = {
 
 // Action Creators
 
+/*
+Action:
+  {
+    type: resolve(userConstants.LOGIN)
+  }
+is dispatched at 'Cart' module in getCart() action creator if cart backend request has been successful.
+Every user needs a cart.
+*/
+//
 export const actions = {
   login: () => (dispatch, getState) => {
     if (!getState().user.isBeingFetched) {
@@ -35,9 +45,7 @@ export const actions = {
           return response
         })
         .then(() => {
-          dispatch({
-            type: resolve(constants.LOGIN)
-          })
+          dispatch(cartActions.getCart())
         })
         .catch((err) => {
           dispatch({
@@ -56,6 +64,13 @@ export const actions = {
     return {
       type: constants.LOGOUT
     }
+  },
+  init: () => (dispatch) => {
+    const token = localStorage.getItem('shopy-jwt')
+    if (token) {
+      setAuthHeader(token)
+      dispatch(cartActions.getCart())
+    }
   }
 }
 
@@ -63,12 +78,6 @@ export const actions = {
 export const defaultState = {
   isAuthorized: false,
   isBeingFetched: false
-}
-
-const token = localStorage.getItem('shopy-jwt')
-if (token) {
-  setAuthHeader(token)
-  defaultState.isAuthorized = true
 }
 
 export default function (state = defaultState, action) {

@@ -3,6 +3,7 @@ import locationReducer from './location'
 import productsReducer from 'redux/modules/Products'
 import errorsReducer from 'redux/modules/Errors'
 import userReducer from 'redux/modules/User'
+import cartReducer from 'redux/modules/Cart'
 import { reducer as formReducer } from 'redux-form'
 
 /* eslint-disable camelcase */
@@ -16,6 +17,7 @@ export const makeRootReducer = (asyncReducers) => {
     products: productsReducer,
     errors: errorsReducer,
     user: userReducer,
+    cart: cartReducer,
     core_layout,
     ...asyncReducers
   })
