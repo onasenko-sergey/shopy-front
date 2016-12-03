@@ -25,7 +25,9 @@ class Product1 extends Component {
     const { product, relatedProducts } = this.props
     return (
       <div>
-        <ProductOrder product={product} />
+        {!!product &&
+          <ProductOrder product={product} onSubmit={(data) => { console.log('new product submit data: ', data) }} />
+        }
         <RelatedProducts collection={relatedProducts} />
       </div>
     )
