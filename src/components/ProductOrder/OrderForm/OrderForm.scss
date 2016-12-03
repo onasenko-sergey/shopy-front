@@ -5,7 +5,10 @@
   text-align: center;
 
   &__row {
-    border-top: 1px solid #edeff1;
+    &:first-child {
+      border-top: 1px solid #edeff1;
+      border-bottom: 1px solid #edeff1;
+    }
 
     &:last-child {
       margin: 0;
@@ -13,11 +16,8 @@
   }
 
   &__size, &__quantity {
-    margin-top: 38px;
-    margin-bottom: 31px;
-    font-size: 18px;
-    font-weight: 500;
-    text-transform: capitalize;
+    margin-top: 36px;
+    margin-bottom: 22px;
   }
 
   &__price {

@@ -15,17 +15,11 @@ const propTypes = {
 export const OrderForm = ({ handleSubmit, product }) => (
   <form className='order-form' onSubmit={handleSubmit}>
     <Row className='order-form__row'>
-      <Col md={6}>
-        <p className='order-form__size'>
-          Choose size
-          <SizeInput sizes={product.sizes} />
-        </p>
+      <Col md={6} className='order-form__size'>
+        <SizeInput sizes={product.sizes} />
       </Col>
-      <Col md={6}>
-        <p className='order-form__quantity'>
-          Choose quantity
-          <QuantityInput />
-        </p>
+      <Col md={6} className='order-form__quantity'>
+        <QuantityInput />
       </Col>
     </Row>
     <Row className='order-form__row'>
