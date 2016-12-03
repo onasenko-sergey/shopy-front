@@ -3,6 +3,9 @@ import Order from 'components/ProductOrder/OrderForm'
 
 const validate = (values) => {
   const errors = {}
+  if (!values.size) {
+    errors.size = 'size is required'
+  }
   return errors
 }
 
