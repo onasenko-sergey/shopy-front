@@ -1,23 +1,21 @@
 @import '../../../../styles/variables/colors';
 
-.quantity-input {
-  &__button {
-    padding: 0px 15px;
-    background-color: transparent;
-    border: none;
-    color: #646d75;
-    transition: all 0.2s;
+.order-form__quantity {
+  .quantity-field {
+    padding: 0;
+    line-height: 32px;
 
-    &:active {
-      background-color: #FFAB00;
+    &__legend {
+      margin-right: 18px;
+      font-size: 18px;
+      font-weight: 500;
+      text-transform: capitalize;
+      border: none;
     }
 
-    &:active, &:focus {
-      outline: none;
+    &__value {
+      margin: 0 5px;
+      color: $primaryColor;
     }
-  }
-
-  &__value {
-    color: $primaryColor;
   }
 }

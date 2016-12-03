@@ -1,0 +1,27 @@
+.quantity-field {
+  border: none;
+
+  &__legend {
+    margin-bottom: 0;
+    display: inline-block;
+    width: auto;
+  }
+
+
+  &__button {
+    padding: 0px 15px;
+    background-color: transparent;
+    border: none;
+    color: #646d75;
+    transition: all 0.2s;
+
+    &:active {
+      background-color: #FFAB00;
+    }
+
+    &:active, &:focus {
+      outline: none;
+    }
+  }
+}
+
