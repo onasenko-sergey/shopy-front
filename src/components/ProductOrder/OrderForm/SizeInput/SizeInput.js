@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import './SizeInput.scss'
+import RadioGroup from '../RadioGroup'
 import { Field } from 'redux-form'
 
 const propTypes = {
@@ -8,17 +9,17 @@ const propTypes = {
 
 export const SizeInput = ({ sizes }) => {
   const labels = ['xs', 's', 'm', 'l', 'xl']
-  const radioGroup = sizes.map((size, i) => (
-    <label className='size-input__size' key={i}>
-      <Field className='size-input__radio' name='size' component='input' type='radio' value={size.toString()} />
-      <span className='size-input__label'>{labels[size]}</span>
-      <span className='size-input__hyphen'>&nbsp;-&nbsp;</span>
-    </label>
-  ))
+  const fields = sizes.map((size) => ({
+    label: labels[size],
+    value: size
+  }))
   return (
-    <span className='size-input'>
-      {radioGroup}
-    </span>
+    <Field
+      name='size'
+      legend='Choose size'
+      component={RadioGroup}
+      fields={fields}
+    />
   )
 }
 

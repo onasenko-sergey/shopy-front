@@ -1,32 +1,77 @@
 @import '../../../../styles/variables/colors';
 
-.size-input {
-  display: inline-block;
-  margin: 0 20px;
+.order-form__size {
+  .radio-group {
+    padding: 0;
+    line-height: 32px;
+    border: none;
 
-  &__size{
-    font-weight: 500;
-
-    &:last-child .size-input__hyphen {
-      display: none;
+    &__legend {
+      margin-right: 18px;
+      margin-bottom: 0;
+      display: inline-block;
+      width: auto;
+      font-size: 18px;
+      font-weight: 500;
+      text-transform: capitalize;
+      border: none;
     }
-  }
 
-  &__radio {
-    display: none;
+    &__fields {
+      display: inline-block;
+    }
 
-    &:checked + .size-input__label {
-      font-size: 19px;
+    &__error {
+      display: block;
+      font-size: 16px;
       color: $primaryColor;
     }
   }
 
-  &__label {
-    text-transform: uppercase;
-    font-size: 16px;
+  .radio-field{
+    display: inline-block;
 
-    &:hover {
-      cursor: pointer;
+    &:after {
+      content: '-';
+      margin: 0 8px;
+    }
+
+    &:last-child:after {
+      content: ''
+    }
+
+    &__input {
+      display: none;
+
+      &:checked + .radio-field__label {
+        font-size: 19px;
+        color: $primaryColor;
+      }
+    }
+
+    &__label {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
+
+/*
+display: inline-block;
+margin: 0 20px;
+
+&__size{
+  font-weight: 500;
+
+  &:last-child .size-input__hyphen {
+    display: none;
+  }
+}
+
+*/
