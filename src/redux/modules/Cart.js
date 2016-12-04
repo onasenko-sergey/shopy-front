@@ -1,4 +1,4 @@
-import { getCart } from 'utils/backendAPI'
+import { getCart, addToCart } from 'utils/backendAPI'
 import { reject, resolve } from 'redux-promised'
 import { actions as errorsActions } from './Errors'
 import { actions as userActions, constants as userConstants } from './User'
@@ -6,7 +6,8 @@ import { actions as userActions, constants as userConstants } from './User'
 // Constants
 
 export const constants = {
-  GET_CART: 'GET_CART'
+  GET_CART: 'GET_CART',
+  ADD_TO_CART: 'ADD_TO_CART'
 }
 
 // Action Creators
@@ -34,6 +35,16 @@ export const actions = {
           throw err
         })
     })
+  },
+  addToCart: (id, data) => (dispatch) => {
+    dispatch({
+      type: constants.ADD_TO_CART,
+      payload: addToCart(id, data)
+        .catch((err) => {
+          dispatch(errorsActions.add(err))
+          throw err
+        })
+    })
   }
 }
 
@@ -45,6 +56,10 @@ export default function (state = defaultState, action) {
     case resolve(constants.GET_CART):
       return action.payload.data.cart.products
     case reject(constants.GET_CART):
+      return []
+    case resolve(constants.ADD_TO_CART):
+      return action.payload.data.cart.products
+    case reject(constants.ADD_TO_CART):
       return []
     case userConstants.LOGOUT:
       return []

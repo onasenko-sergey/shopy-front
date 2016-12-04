@@ -32,7 +32,7 @@ export const actions = {
         type: request(constants.LOGIN)
       })
       // open vk auth popup at client
-      getVkAuthPromise({})
+      return getVkAuthPromise({})
         .then(({ code, redirectUri }) => {
           // server auth using received code
           return authVk(code, redirectUri)

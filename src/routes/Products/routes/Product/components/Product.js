@@ -22,11 +22,18 @@ class Product1 extends Component {
   }
 
   render () {
-    const { product, relatedProducts } = this.props
+    const { product, relatedProducts, cartActions: { addToCart }, params: { id }, user,
+      userActions: { login } } = this.props
     return (
       <div>
         {!!product &&
-          <ProductOrder product={product} onSubmit={(data) => { console.log('new product submit data: ', data) }} />
+          <ProductOrder
+            product={product}
+            onSubmit={(data) => {
+              if (!user.isAuthorized) { login().then(() => {addToCart(id, data)}) }
+              else {addToCart(id, data)}
+            }}
+          />
         }
         <RelatedProducts collection={relatedProducts} />
       </div>
