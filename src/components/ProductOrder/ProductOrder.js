@@ -12,7 +12,7 @@ const propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export const ProductOrder = ({ product, onSubmit }) => (
+export const ProductOrder = ({ product, onSubmit, existingCartProducts }) => (
   <Section className='product-order'>
     <Grid>
       <Row>
@@ -28,7 +28,9 @@ export const ProductOrder = ({ product, onSubmit }) => (
           <OrderForm
             product={product}
             onSubmit={onSubmit}
-            initialValues={{ quantity: 1 }} />
+            initialValues={{ quantity: 1 }}
+            existingCartProducts={existingCartProducts}
+          />
         </Col>
       </Row>
     </Grid>

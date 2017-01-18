@@ -12,7 +12,7 @@ const propTypes = {
   product: PropTypes.object.isRequired
 }
 
-export const OrderForm = ({ handleSubmit, product }) => (
+export const OrderForm = ({ handleSubmit, product, existingCartProducts, size }) => (
   <form className='order-form' onSubmit={handleSubmit}>
     <Row className='order-form__row'>
       <Col md={6} className='order-form__size'>
@@ -33,6 +33,7 @@ export const OrderForm = ({ handleSubmit, product }) => (
         <Button type='submit' className='order-form__btn-submit'>Order now</Button>
       </div>
     </Row>
+    Cart - {existingCartProducts.filter((product) => (product.size.toString() === size)).length}
   </form>
 )
 

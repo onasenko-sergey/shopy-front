@@ -1,5 +1,6 @@
-import { reduxForm } from 'redux-form'
+import { reduxForm, formValueSelector } from 'redux-form'
 import Order from 'components/ProductOrder/OrderForm'
+import { connect } from 'react-redux'
 
 const validate = (values) => {
   const errors = {}
@@ -9,9 +10,17 @@ const validate = (values) => {
   return errors
 }
 
-export const OrderForm = reduxForm({
+const selector = formValueSelector('Order')
+
+let OrderForm = reduxForm({
   form: 'Order',
   validate
 })(Order)
+
+OrderForm = connect(
+  state => ({
+    size: selector(state, 'size')
+  })
+)(OrderForm)
 
 export default OrderForm

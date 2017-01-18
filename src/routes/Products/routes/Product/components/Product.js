@@ -10,29 +10,27 @@ const propTypes = {
   relatedProducts: PropTypes.array
 }
 
-class Product1 extends Component {
+class Product extends Component {
   componentWillMount () {
-    const { init, params } = this.props
-    init(params.id)
+    const { init, params: { id } } = this.props
+    init(id)
   }
 
   componentWillUpdate (nextProps) {
-    const { init, params: { id } } = nextProps
-    if (id !== this.props.params.id) init(id)
+    const { init, params: { id } } = this.props
+    if (id !== nextProps.params.id) init(id)
   }
 
   render () {
-    const { product, relatedProducts, cartActions: { addToCart }, params: { id }, user,
-      userActions: { login } } = this.props
+    const { product, relatedProducts, cartActions: { addToCart }, params: { id }, cart } = this.props
+    const existingCartProducts = cart.filter((item) => { return item.product._id === id })
     return (
       <div>
         {!!product &&
           <ProductOrder
             product={product}
-            onSubmit={(data) => {
-              if (!user.isAuthorized) { login().then(() => {addToCart(id, data)}) }
-              else {addToCart(id, data)}
-            }}
+            onSubmit={(data) => { addToCart(id, data) }}
+            existingCartProducts={existingCartProducts}
           />
         }
         <RelatedProducts collection={relatedProducts} />
@@ -42,5 +40,5 @@ class Product1 extends Component {
 
 }
 
-Product1.propTypes = propTypes
-export default Product1
+Product.propTypes = propTypes
+export default Product

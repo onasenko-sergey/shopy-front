@@ -36,14 +36,23 @@ export const actions = {
         })
     })
   },
-  addToCart: (id, data) => (dispatch) => {
-    dispatch({
-      type: constants.ADD_TO_CART,
-      payload: addToCart(id, data)
-        .catch((err) => {
-          dispatch(errorsActions.add(err))
-          throw err
-        })
+  addToCart: (id, data) => (dispatch, getState) => {
+    const { user: { isAuthorized } } = getState()
+    let promise = Promise.resolve()
+    if (!isAuthorized) {
+      promise = promise.then(() => {
+        return dispatch(userActions.login())
+      })
+    }
+    promise.then(() => {
+      dispatch({
+        type: constants.ADD_TO_CART,
+        payload: addToCart(id, data)
+          .catch((err) => {
+            dispatch(errorsActions.add(err))
+            throw err
+          })
+      })
     })
   }
 }
@@ -59,8 +68,8 @@ export default function (state = defaultState, action) {
       return []
     case resolve(constants.ADD_TO_CART):
       return action.payload.data.cart.products
-    case reject(constants.ADD_TO_CART):
-      return []
+    // case reject(constants.ADD_TO_CART):
+    //   return []
     case userConstants.LOGOUT:
       return []
     default:
